@@ -2,7 +2,7 @@ module.exports = {
   env: {
     es6: true,
   },
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['prettier', 'prettier/react'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -18,7 +18,20 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
-    'max-len': ['error', { code: 60 }],
+    'react/jsx-max-props-per-line': [
+      2,
+      {
+        maximum: 1,
+        when: 'always',
+      },
+    ],
+    'max-len': [
+      'error',
+      {
+        code: 80,
+        tabWidth: 4,
+      },
+    ],
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
       'warn',
