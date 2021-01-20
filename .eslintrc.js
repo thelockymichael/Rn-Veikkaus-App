@@ -32,7 +32,6 @@ module.exports = {
         tabWidth: 4,
       },
     ],
-    'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
       'warn',
       {

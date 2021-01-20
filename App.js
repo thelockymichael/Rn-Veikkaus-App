@@ -2,27 +2,17 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import Navigator from './navigators/Navigator';
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <Jotain lol="ds" assgags="asfaga" asgjadngk="422412" asgjadngk="422412" />
-    </View>
+    <Navigator />
+    // <View style={styles.container}>
+    //   <Text>Open up App.js to start working on your app!</Text>
+    //   <StatusBar style="auto" />
+    // </View>
   );
-}
-
-const foo = {
-  bar: 'This is a bar.',
-  baz: { qux: 'This is a qux' },
-  difficult: 'to read',
 };
-
-const Jotain = (props) => (
-  <View>
-    <Text>{props.lol}</Text>
-  </View>
-);
 
 const styles = StyleSheet.create({
   container: {
@@ -32,3 +22,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
