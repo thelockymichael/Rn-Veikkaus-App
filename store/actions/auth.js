@@ -108,6 +108,10 @@ export const login = (username, password) => {
 
       console.log("LOGIN SUCCESSFUL")
       console.log(response)
+
+      const resData = await response.json()
+
+      console.log("res", resData);
     }
 
 
