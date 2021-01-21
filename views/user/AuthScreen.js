@@ -60,16 +60,17 @@ const AuthScreen = (props) => {
       }
 
       const transformedData = JSON.parse(userData)
-      const { token, user_id, expiryDate } = transformedData
+      const { token, /* user_id */ expiryDate } = transformedData
       const expirationDate = new Date(expiryDate)
 
       if (expirationDate <= new Date() ||
-        !token || !user_id) {
+        !token /* || !user_id */) {
         return
       }
 
+      console.log("propsus navigatus", props.navigation);
       props.navigation.navigate('Home')
-      dispatch(authActions.authenticate(user_id, token))
+      dispatch(authActions.authenticate(/* user_id */ token))
     }
     tryLogin()
   }, [dispatch])

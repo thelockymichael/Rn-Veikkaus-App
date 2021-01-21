@@ -1,8 +1,8 @@
-import {AUTHENTICATE, LOGOUT} from '../actions/auth'
+import { AUTHENTICATE, LOGOUT } from '../actions/auth'
 
 const initialState = {
   token: null,
-  user_id: null,
+  // user_id: null,
 }
 
 export default (state = initialState, action) => {
@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
     case AUTHENTICATE:
       return {
         token: action.token,
-        user_id: action.user_id,
+        // user_id: action.user_id,
       }
     // case SIGNUP:
     //   return {
