@@ -104,15 +104,82 @@ export const login = (username, password) => {
       throw new Error(errorResData.message)
     }
 
-    if (response.ok) {
+    console.log("set cookie", response.headers.map['set-cookie']);
 
-      console.log("LOGIN SUCCESSFUL")
-      console.log(response)
+    const str = response.headers.map['set-cookie']
 
-      const resData = await response.json()
+    const isessionId = str.split('=')[1].split(';')[0]
 
-      console.log("res", resData);
+    console.log("str", isessionId);
+
+    const secondHeaders = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'X-ESA-API-Key': 'ROBOT',
+      'isessionid': isessionId
     }
+
+    const response2 = await fetch("https://www.veikkaus.fi/api/v1/players/self/account", {
+      method: "GET",
+      headers: secondHeaders
+    })
+
+    const resData2 = await response2.json()
+
+    console.log(resData2);
+    // var res = str.split('=')[1].split(';')[0] 
+    /* 
+        if (response.ok) {
+    
+          console.log("LOGIN SUCCESSFUL")
+          console.log(response)
+    
+          const resData = await response.json()
+    
+          console.log("res", resData);
+    
+          // NEW CODE
+          console.log("responsus", response.headers);
+    
+          console.log("set cookie", response.headers.map['set-cookie']);
+    
+          const options = {
+            'Cookie': response.headers.map['set-cookie']
+    
+          }
+    
+          const response2 =
+            await fetch("https://www.veikkaus.fi/api/v1/players/self/account", {
+              method: 'GET',
+              headers: options
+            })
+    
+          console.log("response2");
+          console.log("new response2", response2);
+    
+          if (!response2.ok) {
+            console.log("RESPONSE2 failed !");
+          }
+        } */
+    // const headers = {
+    //   'Content-type': 'application/json',
+    //   'Accept': 'application/json',
+    //   'X-ESA-API-Key': 'ROBOT'
+    // }
+
+    // const response =
+    //  await fetch('https://www.veikkaus.fi/api/bff/v1/sessions',
+    //   {
+    //     method: 'POST',
+    //     headers,
+    //     body: JSON.stringify({
+    //       "type": "STANDARD_LOGIN",
+    //       "login": username,
+    //       "password": password
+    //     }),
+
+    //     // {"type":"STANDARD_LOGIN","login":username,"password":password}
+    //   })
 
 
     // const resData = await response.json()
