@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux'
@@ -14,6 +14,9 @@ import authReducer from './store/reducers/auth'
 // Debugger
 import { composeWithDevTools } from "redux-devtools-extension"
 
+// Fonts
+// import * as Font from 'expo-font'
+// import { AppLoading } from "expo"
 
 const rootReducer = combineReducers({
   auth: authReducer
@@ -25,7 +28,27 @@ const store = createStore(
   )
 )
 
+// const loadFonts = async () => {
+//   await Font.loadAsync({
+//     'open-sans-regular': require('./assets/fonts/OpenSans-Regular.tff'),
+//   })
+// }
+
 const App = () => {
+  // const [fontReady, setFontReady] = useState(false)
+
+
+  // if (!fontReady) {
+  //   return (
+  //     <AppLoading
+  //       startAsync={loadFonts}
+  //       onFinish={() => {
+  //         setFontReady(true)
+  //       }}
+  //     />
+  //   )
+  // }
+
   return (
     <Provider store={store}>
       <Navigator />

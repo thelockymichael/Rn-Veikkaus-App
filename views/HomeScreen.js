@@ -6,13 +6,28 @@ import AsyncStorage from "@react-native-community/async-storage";
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  Button
 } from 'react-native';
 
+import { useDispatch } from 'react-redux'
 
+//import * as authActions from '../../store/actions/auth'
+import * as authActions from '../store/actions/auth'
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
+
+  const dispatch = useDispatch()
+
   const [currentBalance, setCurrentBalance] = useState(null)
+
+  const logoutHandler = async () => {
+
+    dispatch(authActions.logout())
+    await AsyncStorage.clear()
+    navigation.navigate('Authentication')
+
+  }
 
   const getSession = async () => {
     const session = await AsyncStorage.getItem("userData")
@@ -43,10 +58,17 @@ const HomeScreen = () => {
     getSession()
   }, [])
 
+  //       dispatch(authActions.authenticate(/* user_id */ token))
+
   return (
     <View
       style={styles.container}
     >
+      <Button
+        title="Log out"
+        onPress={logoutHandler}
+      />
+
       <Text style={{ fontSize: 24 }}>Balance</Text>
       <Text>{currentBalance}</Text>
     </View>

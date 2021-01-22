@@ -12,7 +12,6 @@ import AuthScreen from "../views/user/AuthScreen"// import React from 'react';
 
 
 
-const Stack = createStackNavigator()
 const AuthStack = createStackNavigator()
 const AppStack = createStackNavigator()
 
@@ -21,13 +20,9 @@ const AuthScreens = () => {
     <AuthStack.Navigator
       initialRouteName='Authentication'
     >
-      <Stack.Screen
+      <AuthStack.Screen
         name="Authentication"
         component={AuthScreen}
-      />
-      <Stack.Screen
-        name="Home"
-        component={AppScreens}
       />
     </AuthStack.Navigator>
   )
@@ -38,7 +33,7 @@ const AppScreens = () => {
     <AppStack.Navigator
       initialRouteName='Home'
     >
-      <Stack.Screen
+      <AppStack.Screen
         name="Home"
         component={HomeScreen}
       />
@@ -58,6 +53,8 @@ const Navigator = () => {
 
   const isLoggedIn = useSelector((state) =>
     state.auth.token)
+
+  console.log("state.auth.token", isLoggedIn)
   return (
     <NavigationContainer>
       {isLoggedIn ?
