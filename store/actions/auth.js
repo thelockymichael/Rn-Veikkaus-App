@@ -102,29 +102,38 @@ export const login = (username, password) => {
       throw new Error(errorResData.message)
     }
 
-    console.log("set cookie", response.headers.map['set-cookie']);
+    // console.log("set cookie", response.headers.map['set-cookie']);
 
     const str = response.headers.map['set-cookie']
 
     const isessionId = str.split('=')[1].split(';')[0]
 
-    console.log("str", isessionId);
+    // console.log("str", isessionId);
 
-    const secondHeaders = {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'X-ESA-API-Key': 'ROBOT',
-      'isessionid': isessionId
-    }
+    // const secondHeaders = {
+    //   'Content-type': 'application/json',
+    //   'Accept': 'application/json',
+    //   'X-ESA-API-Key': 'ROBOT',
+    //   'isessionid': isessionId
+    // }
 
-    const response2 = await fetch("https://www.veikkaus.fi/api/v1/players/self/account", {
-      method: "GET",
-      headers: secondHeaders
-    })
+    // const response2 = await fetch("https://www.veikkaus.fi/api/v1/players/self/account", {
+    //   method: "GET",
+    //   headers: secondHeaders
+    // })
 
-    const resData2 = await response2.json()
+    // const resData2 = await response2.json()
 
-    console.log(resData2);
+    // console.log(resData2);
+
+    //   authenticate(
+    //     resData.user.user_id,
+    //     resData.token),
+    // )
+
+    dispatch(authenticate(
+      isessionId,
+    ))
 
     const expirationDate =
       new Date(new Date().getTime() + 3600000,
@@ -134,8 +143,7 @@ export const login = (username, password) => {
       expirationDate
     )
 
-
-    //   authenticate(
+    //   dispatch(authenticate(
     //     resData.user.user_id,
     //     resData.token),
     // )

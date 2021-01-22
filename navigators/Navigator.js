@@ -58,14 +58,9 @@ const Navigator = () => {
   return (
     <NavigationContainer>
       {isLoggedIn ?
-        <AppScreens
-          options={{ animationEnabled: false }}
-        /> : (
-          <AuthScreens options={{
-            animationEnabled: false
-          }
-          }
-          />
+        <AppScreens /> :
+        (
+          <AuthScreens />
         )
       }
     </NavigationContainer>

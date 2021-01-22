@@ -19,6 +19,8 @@ import { useDispatch } from 'react-redux'
 import * as authActions from '../../store/actions/auth'
 import { ActivityIndicator } from 'react-native-paper'
 
+import { useSelector } from "react-redux"
+
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE'
 
 const formReducer = (state, action) => {
@@ -51,6 +53,9 @@ const AuthScreen = (props) => {
   const [isSignup, setIsSignup] = useState(false)
   const dispatch = useDispatch()
 
+  const isLoggedIn = useSelector((state) =>
+    state.auth.token)
+
   useEffect(() => {
     const tryLogin = async () => {
       const userData = await AsyncStorage.getItem('userData')
@@ -68,8 +73,7 @@ const AuthScreen = (props) => {
         return
       }
 
-      console.log("propsus navigatus", props.navigation);
-      props.navigation.navigate('Home')
+      // props.navigation.replace('Home')
       dispatch(authActions.authenticate(/* user_id */ token))
     }
     tryLogin()
@@ -123,7 +127,10 @@ const AuthScreen = (props) => {
     setIsLoading(true)
     try {
       await dispatch(action)
-      props.navigation.navigate('Home')
+
+
+      console.log("isloggedin", isLoggedIn);
+      // props.navigation.replace('Home')
     } catch (err) {
       setError(err.message)
       setIsLoading(false)
