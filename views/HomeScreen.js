@@ -12,14 +12,21 @@ import {
 
 import { useDispatch } from 'react-redux'
 
-//import * as authActions from '../../store/actions/auth'
 import * as authActions from '../store/actions/auth'
+import * as userActions from '../store/actions/user'
+
+// React Redux
+import { useSelector } from "react-redux"
 
 const HomeScreen = ({ navigation }) => {
 
   const dispatch = useDispatch()
-
   const [currentBalance, setCurrentBalance] = useState(null)
+
+  const balance = useSelector((state) => state.user.balance)
+  const currency = useSelector((state) => state.user.currency)
+
+  console.log("balance", balance);
 
   const logoutHandler = async () => {
 
@@ -29,36 +36,10 @@ const HomeScreen = ({ navigation }) => {
 
   }
 
-  const getSession = async () => {
-    const session = await AsyncStorage.getItem("userData")
-
-    console.log("session token", session.token);
-
-    const headers = {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'X-ESA-API-Key': 'ROBOT',
-      'isessionid': session.token
-    }
-
-    const response = await
-      fetch("https://www.veikkaus.fi/api/v1/players/self/account", {
-        method: "GET",
-        headers: headers
-      })
-
-    const resData = await response.json()
-
-    console.log("resData", resData);
-
-    setCurrentBalance(`${resData.balances.CASH.balance} ${resData.balances.CASH.currency}`)
-  }
-
   useEffect(() => {
-    getSession()
-  }, [])
+    dispatch(userActions.getBalance())
+  }, [dispatch])
 
-  //       dispatch(authActions.authenticate(/* user_id */ token))
 
   return (
     <View
@@ -70,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
       />
 
       <Text style={{ fontSize: 24 }}>Balance</Text>
-      <Text>{currentBalance}</Text>
+      <Text>{balance} {currency}</Text>
     </View>
   );
 };

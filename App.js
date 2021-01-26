@@ -11,6 +11,9 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk'
 import authReducer from './store/reducers/auth'
 
+// User
+import userReducer from './store/reducers/user'
+
 // Debugger
 import { composeWithDevTools } from "redux-devtools-extension"
 
@@ -19,7 +22,8 @@ import { composeWithDevTools } from "redux-devtools-extension"
 // import { AppLoading } from "expo"
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  user: userReducer
 })
 
 const store = createStore(
