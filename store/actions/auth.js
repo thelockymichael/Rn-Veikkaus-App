@@ -2,6 +2,9 @@ export const AUTHENTICATE = 'AUTHENTICATE'
 export const LOGOUT = 'AUTHENTICATE'
 import AsyncStorage from '@react-native-community/async-storage'
 
+// Helpers
+import helpers from "../../utils/helpers"
+
 export const authenticate = (/* userId */token) => {
   return { type: AUTHENTICATE, /* userId, */ token }
 }
@@ -106,7 +109,8 @@ export const login = (username, password) => {
 
     const str = response.headers.map['set-cookie']
 
-    const isessionId = str.split('=')[1].split(';')[0]
+    const isessionId = helpers.getSessionId(str)
+    // const isessionId = str.split('=')[1].split(';')[0]
 
     // console.log("str", isessionId);
 
