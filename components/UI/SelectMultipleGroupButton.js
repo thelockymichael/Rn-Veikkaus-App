@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {View, Text, StyleSheet} from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 import PropTypes from "prop-types";
 import _ from "lodash";
@@ -8,7 +8,7 @@ import SelectMultipleButton from "./SelectMultipleButton";
 const ios_blue = "#007AFF";
 
 const SelectMultipleGroupButton = (props) => {
-  const [multipleSelecteData, setMultipleSelectedData] = useState([])
+  const [multipleSelectedData, setMultipleSelectedData] = useState([])
   const [radioSelectedData, setRadioSelectedData] = useState("")
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const SelectMultipleGroupButton = (props) => {
           multiple={props.multiple}
           value={ele.value}
           displayValue={ele.displayValue}
-          selected={() => selectedStatus(ele.value)}
+          selected={selectedStatus(ele.value)}
           singleTap={valueTap =>
             singleTapMultipleSelectedButtons(valueTap)
           }
@@ -156,8 +156,8 @@ SelectMultipleGroupButton.propTypes = {
 
 SelectMultipleGroupButton.defaultProps = {
   multiple: true,
-  singleTap: valueTap => {},
-  onSelectedValuesChange: selectedValues => {}
+  singleTap: valueTap => { },
+  onSelectedValuesChange: selectedValues => { }
 };
 
 export default SelectMultipleGroupButton

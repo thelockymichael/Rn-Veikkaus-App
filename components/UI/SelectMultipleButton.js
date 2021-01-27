@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
 
 import {
@@ -16,11 +16,11 @@ const SelectMultipleButton = (props) => {
 
   useEffect(() => {
     setSelected(props.selected)
-  }, [])
-
-  useEffect(() => {
-    setSelected(props.selected)
   }, [props.selected])
+
+  // useEffect(() => {
+  //   setSelected(props.selected)
+  // }, [props.selected])
 
   return (
     <TouchableWithoutFeedback
@@ -47,7 +47,11 @@ const SelectMultipleButton = (props) => {
           [
             styles.text,
             props.textStyle,
-            {color: selected ? props.highLightStyle.textTintColor : props.highLightStyle.textColor}
+            {
+              color: selected ?
+                props.highLightStyle.textTintColor :
+                props.highLightStyle.textColor
+            }
           ]
         }>
           {props.displayValue === undefined ? props.value : props.displayValue}
@@ -98,7 +102,7 @@ SelectMultipleButton.defaultProps = {
     textTintColor: ios_blue,
   },
 
-  singleTap: (valueTap) => {},
+  singleTap: (valueTap) => { },
 }
 
 const styles = StyleSheet.create({

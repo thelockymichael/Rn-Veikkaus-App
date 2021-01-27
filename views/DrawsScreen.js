@@ -41,35 +41,35 @@ const DrawsScreen = ({ navigation }) => {
           defaultSelectedIndexes={[0]}
           singleTap={valueTap => setSelectedDraw(valueTap)}
 
-          // switch (valueTap) {
-          //   case "Multiscore":
-          //     console.log("SimpleBtn");
-          //     break;
-          //   case "Score":
-          //     console.log("GroupBtn");
+        // switch (valueTap) {
+        //   case "Multiscore":
+        //     console.log("SimpleBtn");
+        //     break;
+        //   case "Score":
+        //     console.log("GroupBtn");
 
-          //     break;
-          //   case "Sport":
-          //     console.log("Segment");
+        //     break;
+        //   case "Sport":
+        //     console.log("Segment");
 
-          //     break;
-          //   case "Winner":
-          //     console.log("List");
+        //     break;
+        //   case "Winner":
+        //     console.log("List");
 
-          //     break;
-          //   default:
-          //     break;
-          // }
+        //     break;
+        //   default:
+        //     break;
+        // }
 
-          buttonViewStyle={{ flex: 1, margin: 0, borderRadius: 0 }}
-          highLightStyle={{
-            borderColor: Colors.primaryColor,
-            textColor: Colors.primaryColor,
-            backgroundColor: Colors.accentColor,
-            borderTintColor: Colors.primaryColor,
-            textTintColor: "white",
-            backgroundTintColor: Colors.primaryColor
-          }}
+        // buttonViewStyle={{ flex: 1, margin: 0, borderRadius: 0 }}
+        // highLightStyle={{
+        //   borderColor: Colors.primaryColor,
+        //   textColor: Colors.primaryColor,
+        //   backgroundColor: Colors.accentColor,
+        //   borderTintColor: Colors.primaryColor,
+        //   textTintColor: "white",
+        //   backgroundTintColor: Colors.primaryColor
+        // }}
         />
       </View>
       <Text>DrawsScreen</Text>
