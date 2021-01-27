@@ -5,10 +5,14 @@ import {
   StyleSheet,
   View,
   Text,
-  Button
+  Button,
+  FlatList
 } from 'react-native';
 
-import SelectMultipleButton from "../components/UI/SelectMultipleButton"
+import { useDispatch } from 'react-redux'
+import { useSelector } from "react-redux"
+import * as gamesActions from '../store/actions/games'
+
 import SelectMultipleGroupButton from "../components/UI/SelectMultipleGroupButton"
 
 // Colors
@@ -17,6 +21,11 @@ import Colors from "../constants/Colors"
 const DrawsScreen = ({ navigation }) => {
   const [selectedDraw, setSelectedDraw] = useState("Multiscore")
 
+  const draws = useSelector((state) => state.games.draws)
+
+  console.log(draws);
+
+  const dispatch = useDispatch()
 
   console.log(selectedDraw);
   return (
@@ -39,40 +48,18 @@ const DrawsScreen = ({ navigation }) => {
             { value: "Ravi" },
           ]}
           defaultSelectedIndexes={[0]}
-          singleTap={valueTap => setSelectedDraw(valueTap)}
+          // singleTap={valueTap => setSelectedDraw(valueTap)}
+          singleTap={async (valueTap) => {
+            await dispatch(gamesActions.getDraws(valueTap.toUpperCase()))
 
-        // switch (valueTap) {
-        //   case "Multiscore":
-        //     console.log("SimpleBtn");
-        //     break;
-        //   case "Score":
-        //     console.log("GroupBtn");
 
-        //     break;
-        //   case "Sport":
-        //     console.log("Segment");
-
-        //     break;
-        //   case "Winner":
-        //     console.log("List");
-
-        //     break;
-        //   default:
-        //     break;
-        // }
-
-        // buttonViewStyle={{ flex: 1, margin: 0, borderRadius: 0 }}
-        // highLightStyle={{
-        //   borderColor: Colors.primaryColor,
-        //   textColor: Colors.primaryColor,
-        //   backgroundColor: Colors.accentColor,
-        //   borderTintColor: Colors.primaryColor,
-        //   textTintColor: "white",
-        //   backgroundTintColor: Colors.primaryColor
-        // }}
+          }}
         />
       </View>
       <Text>DrawsScreen</Text>
+      <FlatList
+
+      />
     </View>
   );
 };

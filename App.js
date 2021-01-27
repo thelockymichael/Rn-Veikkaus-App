@@ -14,6 +14,9 @@ import authReducer from './store/reducers/auth'
 // User
 import userReducer from './store/reducers/user'
 
+// Games
+import gamesReducer from './store/reducers/games'
+
 // Debugger
 import { composeWithDevTools } from "redux-devtools-extension"
 
@@ -23,7 +26,8 @@ import { composeWithDevTools } from "redux-devtools-extension"
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  user: userReducer
+  user: userReducer,
+  games: gamesReducer
 })
 
 const store = createStore(
