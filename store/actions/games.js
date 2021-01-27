@@ -24,7 +24,7 @@ export const getDraws = (gameType) => {
 
     const resData = await response.json()
 
-    // console.log("resData", resData.draws);
+    console.log("resData", resData);
 
 
     dispatch(
