@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19000'",
-    "lint": "eslint . --fix-all"
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "@react-native-community/async-storage": "~1.12.0",
