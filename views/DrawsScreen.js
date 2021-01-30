@@ -24,9 +24,13 @@ import Colors from "../constants/Colors"
 
 import { TabView, SceneMap } from 'react-native-tab-view';
 
-const MultiscoreRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
-);
+// Games Screens
+
+import MultiScoreScreen from "../views/games/MultiScoreScreen"
+
+// const MultiscoreRoute = () => (
+//   <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+// );
 
 const ScoreRoute = () => (
   <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
@@ -97,7 +101,7 @@ const DrawsScreen = ({ navigation }) => {
   //             { value: "Ravi" },
 
   const renderScene = SceneMap({
-    multiscore: MultiscoreRoute,
+    multiscore: MultiScoreScreen,
     score: ScoreRoute,
     sport: SportRoute,
     winner: WinnerRoute,
