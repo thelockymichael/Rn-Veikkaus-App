@@ -9,21 +9,21 @@ import {
 } from "react-native"
 
 const ToggleButton = (props) => {
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(props.value)
 
   const [toggleValue, setToggleValue] = useState(props.checked ?
-    "" : props.number)
+    "" : props.item.number)
 
 
   const toggleHandler = () => {
     setToggle(!toggle)
-    // console.log("What is my number?", props.number);
+    // console.log("What is my item.number?", props.item.number);
 
-    props.scoreHandler(props.number)
+    props.scoreHandler(props.input, props.item)
 
     if (props.checked) {
       setToggleValue(!toggle ? "X" : "")
-      props.scoreHandler(!toggle, props.action)
+      props.scoreHandler(props.input, !toggle)
     }
   }
 
