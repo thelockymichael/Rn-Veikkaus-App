@@ -1,17 +1,18 @@
-import { PLAY_MULTISCORE } from '../actions/games'
+import { MULTISCORE_DATA } from '../actions/playgames';
 
 const initialState = {
   multiscore: null,
   // user_id: null,
-}
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case PLAY_MULTISCORE:
+    case MULTISCORE_DATA:
+      console.log('aktus', action.multiscoreData);
       return {
-        multiscore: action.multiscore,
+        multiscore: action.multiscoreData,
         // user_id: action.user_id,
-      }
+      };
     // case SIGNUP:
     //   return {
     //     token: action.token,
@@ -19,6 +20,6 @@ export default (state = initialState, action) => {
     //   }
 
     default:
-      return state
+      return state;
   }
-}
+};
